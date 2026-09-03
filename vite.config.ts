@@ -1,13 +1,15 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'node:path';
+import { defineConfig } from 'vite'
+import { resolve } from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig({
-  assetsInclude: ['**/assets/Gallery/**'],
-
   server: {
     host: true,
     allowedHosts: true,
   },
+
   build: {
     rollupOptions: {
       input: {
@@ -17,4 +19,4 @@ export default defineConfig({
       },
     },
   },
-});
+})
