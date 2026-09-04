@@ -32,7 +32,7 @@ if (year) {
 }
 
 // ─────────────────────────────────────────────
-// Admission enquiry form
+// Admission enquiry
 // ─────────────────────────────────────────────
 
 const admissionForm =
@@ -46,50 +46,94 @@ const formStatus =
 
 // School contact details
 const SCHOOL_EMAIL = 'smsinghintercollege@gmail.com';
-const WHATSAPP_NUMBER = '918318600789'; // Shivakant Shukla - Clerk
+
+// Shivakant Shukla — Clerk / School Office
+const WHATSAPP_NUMBER = '918318600789';
 
 // ─────────────────────────────────────────────
-// Create admission enquiry message
+// Get form data
 // ─────────────────────────────────────────────
 
-const getAdmissionMessage = (form: HTMLFormElement): string => {
+const getFormData = (form: HTMLFormElement) => {
   const data = new FormData(form);
+
+  return {
+    fatherName: String(data.get('fatherName') || 'Not provided'),
+    motherName: String(data.get('motherName') || 'Not provided'),
+    studentName: String(data.get('studentName') || 'Not provided'),
+    grade: String(data.get('grade') || 'Not provided'),
+    note: String(data.get('note') || 'None'),
+  };
+};
+
+// ─────────────────────────────────────────────
+// Gmail message
+// ─────────────────────────────────────────────
+
+const getEmailMessage = (form: HTMLFormElement): string => {
+  const data = getFormData(form);
 
   return [
     'Admission Enquiry',
     '',
-    `Father's name: ${data.get('fatherName') || 'Not provided'}`,
-    `Mother's name: ${data.get('motherName') || 'Not provided'}`,
-    `Student's name: ${data.get('studentName') || 'Not provided'}`,
-    `Grade of interest: ${data.get('grade') || 'Not provided'}`,
-    `Additional note: ${data.get('note') || 'None'}`,
+    `Father's Name: ${data.fatherName}`,
+    `Mother's Name: ${data.motherName}`,
+    `Student's Name: ${data.studentName}`,
+    `Grade of Interest: ${data.grade}`,
+    '',
+    'Additional Note:',
+    data.note,
+    '',
+    'Please help me with the admission process.',
+    '',
+    'Thank you.',
   ].join('\n');
 };
 
 // ─────────────────────────────────────────────
-// Email / Gmail enquiry
+// WhatsApp message
+// ─────────────────────────────────────────────
+
+const getWhatsAppMessage = (form: HTMLFormElement): string => {
+  const data = getFormData(form);
+
+  return [
+    '*ADMISSION ENQUIRY*',
+    '',
+    `*Father's Name:* ${data.fatherName}`,
+    `*Mother's Name:* ${data.motherName}`,
+    `*Student's Name:* ${data.studentName}`,
+    `*Grade of Interest:* ${data.grade}`,
+    '',
+    `*Additional Note:*`,
+    data.note,
+    '',
+    'Please help me with the admission process.',
+    '',
+    'Thank you.',
+  ].join('\n');
+};
+
+// ─────────────────────────────────────────────
+// Send enquiry through Gmail
 // ─────────────────────────────────────────────
 
 admissionForm?.addEventListener('submit', (event) => {
   event.preventDefault();
 
-  // Check required fields
   if (!admissionForm.reportValidity()) {
     return;
   }
 
-  const body = getAdmissionMessage(admissionForm);
-
   const subject = encodeURIComponent('Admission Enquiry');
-  const encodedBody = encodeURIComponent(body);
+  const body = encodeURIComponent(getEmailMessage(admissionForm));
 
   const gmailUrl =
     `https://mail.google.com/mail/?view=cm&fs=1` +
     `&to=${encodeURIComponent(SCHOOL_EMAIL)}` +
     `&su=${subject}` +
-    `&body=${encodedBody}`;
+    `&body=${body}`;
 
-  // Open Gmail compose
   window.location.href = gmailUrl;
 
   if (formStatus) {
@@ -99,7 +143,7 @@ admissionForm?.addEventListener('submit', (event) => {
 });
 
 // ─────────────────────────────────────────────
-// WhatsApp enquiry
+// Send enquiry through WhatsApp
 // ─────────────────────────────────────────────
 
 whatsappFormButton?.addEventListener('click', () => {
@@ -107,23 +151,22 @@ whatsappFormButton?.addEventListener('click', () => {
     return;
   }
 
-  // Check required fields
   if (!admissionForm.reportValidity()) {
     return;
   }
 
-  const message = [
-    getAdmissionMessage(admissionForm),
-    '',
-    'Please help me with the admission process.',
-  ].join('\n');
+  const message = encodeURIComponent(
+    getWhatsAppMessage(admissionForm)
+  );
 
   const whatsappUrl =
-    `https://wa.me/${WHATSAPP_NUMBER}` +
-    `?text=${encodeURIComponent(message)}`;
+    `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
 
-  // Open WhatsApp
-  window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  window.open(
+    whatsappUrl,
+    '_blank',
+    'noopener,noreferrer'
+  );
 
   if (formStatus) {
     formStatus.textContent =
