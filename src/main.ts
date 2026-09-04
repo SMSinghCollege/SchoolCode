@@ -38,8 +38,11 @@ const getAdmissionMessage = (form: HTMLFormElement) => {
 admissionForm?.addEventListener('submit', (event) => {
   event.preventDefault();
   const body = getAdmissionMessage(admissionForm);
-  window.location.href = `mailto:smsinghintercollege@gmail.com?subject=${encodeURIComponent('Admission Enquiry')}&body=${encodeURIComponent(body)}`;
-  if (formStatus) formStatus.textContent = 'Your email app should open. If it does not, use WhatsApp below.';
+  const subject = encodeURIComponent('Admission Enquiry');
+  const encodedBody = encodeURIComponent(body);
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=smsinghintercollege@gmail.com&su=${subject}&body=${encodedBody}`;
+  window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+  if (formStatus) formStatus.textContent = 'Opening Gmail with your enquiry. You may review and send it there.';
 });
 
 whatsappFormButton?.addEventListener('click', () => {
