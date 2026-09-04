@@ -1049,6 +1049,25 @@ footer {
     color: var(--ink);
 }
 
+.enquiry-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.button-whatsapp {
+    border: 1px solid var(--forest);
+    background: transparent;
+    color: var(--forest);
+}
+
+.form-status {
+    min-height: 1.6em;
+    margin: 14px 0 0;
+    color: var(--forest);
+    font-size: 13px;
+}
+
 .enquiry-contacts {
     max-width: 760px;
     margin: 55px auto 0;

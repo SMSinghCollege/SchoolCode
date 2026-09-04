@@ -20,10 +20,12 @@ const year = document.querySelector('#year');
 if (year) year.textContent = String(new Date().getFullYear());
 
 const admissionForm = document.querySelector<HTMLFormElement>('#admission-form');
-admissionForm?.addEventListener('submit', (event) => {
-  event.preventDefault();
-  const data = new FormData(admissionForm);
-  const body = [
+const whatsappFormButton = document.querySelector<HTMLButtonElement>('#whatsapp-form');
+const formStatus = document.querySelector<HTMLElement>('#form-status');
+
+const getAdmissionMessage = (form: HTMLFormElement) => {
+  const data = new FormData(form);
+  return [
     'Admission Enquiry', '',
     `Father's name: ${data.get('fatherName')}`,
     `Mother's name: ${data.get('motherName')}`,
@@ -31,5 +33,18 @@ admissionForm?.addEventListener('submit', (event) => {
     `Grade of interest: ${data.get('grade')}`,
     `Additional note: ${data.get('note') || 'None'}`,
   ].join('\n');
+};
+
+admissionForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const body = getAdmissionMessage(admissionForm);
   window.location.href = `mailto:smsinghintercollege@gmail.com?subject=${encodeURIComponent('Admission Enquiry')}&body=${encodeURIComponent(body)}`;
+  if (formStatus) formStatus.textContent = 'Your email app should open. If it does not, use WhatsApp below.';
+});
+
+whatsappFormButton?.addEventListener('click', () => {
+  if (!admissionForm?.reportValidity()) return;
+  const message = encodeURIComponent(`${getAdmissionMessage(admissionForm)}\n\nPlease help me with the admission process.`);
+  window.open(`https://wa.me/918009575756?text=${message}`, '_blank', 'noopener,noreferrer');
+  if (formStatus) formStatus.textContent = 'Opening WhatsApp with your enquiry for the Manager.';
 });

@@ -52,8 +52,13 @@
               <option>Other / please advise</option>
             </select></label><label class="form-full">Is there anything else you would like us to know?
             <small>(Optional)</small><textarea name="note" rows="5"
-              placeholder="You may share a question or a brief note here."></textarea></label></div><button
-          class="button button-dark" type="submit">Prepare email enquiry <span>→</span></button>
+              placeholder="You may share a question or a brief note here."></textarea></label></div>
+        <div class="enquiry-actions">
+          <button class="button button-dark" type="submit">Prepare email enquiry <span>→</span></button>
+          <button class="button button-whatsapp" id="whatsapp-form" type="button">Send on WhatsApp
+            <span>↗</span></button>
+        </div>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         <p class="form-disclaimer"><strong>Please note:</strong> this is only an enquiry application. The complete
           admission process, including document verification and final registration, will be completed at the school.
         </p>

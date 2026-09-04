@@ -1,16 +1,97 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admission Enquiry | Shivmol Singh KP Singh Memorial Inter College</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="/assets/main-DtPATSgR.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/main-CKtdTTR9.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Baskerville:wght@400;700&display=swap"
+    rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/main-CN2UR1rV.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/main-Mud-RA1-.css">
 </head>
+
 <body>
-  <header class="site-header"><div class="topbar"><span>Affiliated to U.P. Board</span><span>•</span><span>Lachchipur, Sareni · Raebareli</span></div><nav class="nav container"><a href="/" class="brand"><span class="brand-mark">SS</span><span><strong>Shivmol Singh</strong><small>KP Singh Memorial Inter College</small></span></a><a class="enquiry-back" href="/#contact">← Back to school website</a></nav></header>
-  <main class="enquiry-page"><section class="enquiry-hero"><div class="container"><p class="eyebrow">Admissions</p><h1>Begin your child's<br />learning journey.</h1><p>Share a few details and our admissions office will be ready to assist you.</p></div></section><section class="container enquiry-content"><form class="enquiry-form" id="admission-form"><div class="form-intro"><p class="section-label">Admission enquiry</p><h2>Tell us about your child.</h2><p>Fields marked <span aria-hidden="true">*</span> are required.</p></div><div class="form-grid"><label>Father's full name <span>*</span><input name="fatherName" autocomplete="name" required /></label><label>Mother's full name <span>*</span><input name="motherName" autocomplete="name" required /></label><label class="form-full">Student's full name <span>*</span><input name="studentName" autocomplete="name" required /></label><label class="form-full">Which grade are you interested in? <span>*</span><select name="grade" required><option value="" selected disabled>Select a grade</option><option>Class 6</option><option>Class 7</option><option>Class 8</option><option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option><option>Other / please advise</option></select></label><label class="form-full">Is there anything else you would like us to know? <small>(Optional)</small><textarea name="note" rows="5" placeholder="You may share a question or a brief note here."></textarea></label></div><button class="button button-dark" type="submit">Prepare email enquiry <span>→</span></button><p class="form-disclaimer"><strong>Please note:</strong> this is only an enquiry application. The complete admission process, including document verification and final registration, will be completed at the school.</p></form></section></main>
-  <footer><div class="container footer-inner"><a href="/" class="brand footer-brand"><span class="brand-mark">SS</span><span><strong>Shivmol Singh</strong><small>KP Singh Memorial Inter College</small></span></a><p>© <span id="year"></span> Shivmol Singh KP Singh Memorial Inter College.</p></div></footer>
+  <header class="site-header">
+    <div class="topbar"><span>Affiliated to U.P. Board</span><span>•</span><span>Lachchipur, Sareni · Raebareli</span>
+    </div>
+    <nav class="nav container"><a href="/" class="brand"><span class="brand-mark">SS</span><span><strong>Shivmol
+            Singh</strong><small>KP Singh Memorial Inter College</small></span></a><a class="enquiry-back"
+        href="/#contact">← Back to school website</a></nav>
+  </header>
+  <main class="enquiry-page">
+    <section class="enquiry-hero">
+      <div class="container">
+        <p class="eyebrow">Admissions</p>
+        <h1>Begin your child's<br />learning journey.</h1>
+        <p>Share a few details and our admissions office will be ready to assist you.</p>
+      </div>
+    </section>
+    <section class="container enquiry-content">
+      <form class="enquiry-form" id="admission-form">
+        <div class="form-intro">
+          <p class="section-label">Admission enquiry</p>
+          <h2>Tell us about your child.</h2>
+          <p>Fields marked <span aria-hidden="true">*</span> are required.</p>
+        </div>
+        <div class="form-grid"><label>Father's full name <span>*</span><input name="fatherName" autocomplete="name"
+              required /></label><label>Mother's full name <span>*</span><input name="motherName" autocomplete="name"
+              required /></label><label class="form-full">Student's full name <span>*</span><input name="studentName"
+              autocomplete="name" required /></label><label class="form-full">Which grade are you interested in?
+            <span>*</span><select name="grade" required>
+              <option value="" selected disabled>Select a grade</option>
+              <option>Class 6</option>
+              <option>Class 7</option>
+              <option>Class 8</option>
+              <option>Class 9</option>
+              <option>Class 10</option>
+              <option>Class 11</option>
+              <option>Class 12</option>
+              <option>Other / please advise</option>
+            </select></label><label class="form-full">Is there anything else you would like us to know?
+            <small>(Optional)</small><textarea name="note" rows="5"
+              placeholder="You may share a question or a brief note here."></textarea></label></div>
+        <div class="enquiry-actions">
+          <button class="button button-dark" type="submit">Prepare email enquiry <span>→</span></button>
+          <button class="button button-whatsapp" id="whatsapp-form" type="button">Send on WhatsApp <span>↗</span></button>
+        </div>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        <p class="form-disclaimer"><strong>Please note:</strong> this is only an enquiry application. The complete
+          admission process, including document verification and final registration, will be completed at the school.
+        </p>
+      </form>
+      <section class="enquiry-contacts" aria-labelledby="contact-heading">
+        <div>
+          <p class="section-label">Direct contact</p>
+          <h2 id="contact-heading">Talk to our admissions team.</h2>
+          <p>Use WhatsApp for a quick response, or submit the form above to prepare an email enquiry.</p>
+        </div>
+        <div class="contact-list"><a
+            href="https://wa.me/918009575756?text=Hello%20Shailendra%20Singh%2C%20I%20have%20an%20admission%20enquiry.%20Please%20help%20me."
+            target="_blank" rel="noreferrer"><span>Manager</span><strong>Shailendra Singh</strong><em>WhatsApp:
+              8009575756 ↗</em></a><a
+            href="https://wa.me/918318607809?text=Hello%20Shivakant%20Shukla%2C%20I%20have%20an%20admission%20enquiry.%20Please%20help%20me."
+            target="_blank" rel="noreferrer"><span>Clerk</span><strong>Shivakant Shukla</strong><em>WhatsApp: 8318600789
+              ↗</em></a><a
+            href="https://wa.me/917376994029?text=Hello%20Rajesh%20Pratap%20Singh%2C%20I%20have%20an%20admission%20enquiry.%20Please%20help%20me."
+            target="_blank" rel="noreferrer"><span>Principal</span><strong>Rajesh Pratap Singh</strong><em>WhatsApp:
+              7376994029 ↗</em></a><a
+            href="https://wa.me/919795401312?text=Hello%20Renu%20Singh%2C%20I%20have%20an%20admission%20enquiry.%20Please%20help%20me."
+            target="_blank" rel="noreferrer"><span>Headmistress</span><strong>Renu Singh</strong><em>WhatsApp: 97954
+              01312 ↗</em></a></div>
+      </section>
+    </section>
+  </main>
+  <footer>
+    <div class="container footer-inner"><a href="/" class="brand footer-brand"><span
+          class="brand-mark">SS</span><span><strong>Shivmol Singh</strong><small>KP Singh Memorial Inter
+            College</small></span></a>
+      <p>© <span id="year"></span> Shivmol Singh KP Singh Memorial Inter College.</p>
+    </div>
+  </footer>
 </body>
+
 </html>
