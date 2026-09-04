@@ -31,5 +31,5 @@ admissionForm?.addEventListener('submit', (event) => {
     `Grade of interest: ${data.get('grade')}`,
     `Additional note: ${data.get('note') || 'None'}`,
   ].join('\n');
-  window.location.href = `mailto:Smsinghintercollege@gmail.com?subject=${encodeURIComponent('Admission Enquiry')}&body=${encodeURIComponent(body)}`;
+  window.location.href = `mailto:smsinghintercollege@gmail.com?subject=${encodeURIComponent('Admission Enquiry')}&body=${encodeURIComponent(body)}`;
 });
